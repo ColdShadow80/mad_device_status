@@ -26,7 +26,7 @@ mariadb_connection = mariadb.connect(host=dbhost, user=dbuser, database=MADdb, p
 cursor = mariadb_connection.cursor()
 cursor.execute(query)
 
-for origin,lastProtoDateTime in cursor:
+for origin,lastProtoDateTime, lastProtomin in cursor:
 
     originStr="{}".format(origin)
     protoStr="{}".format(lastProtoDateTime)
