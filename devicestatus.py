@@ -40,7 +40,7 @@ for origin,lastProtoDateTime, lastProtomin in cursor:
                 "title": "",
                 "url": "",
                 "color": 16711680,
-                "description": "__**"+originStr+"**__ last data at "+protoStr+" - Not sending data for: "+protoStrTimeNotSeen+"  ",
+                "description": "__**"+originStr+"**__ last data at "+protoStr+" - "+protoStrTimeNotSeen+"minutes since last seen.  ",
                 "image": 
                 {
         "url": ""
