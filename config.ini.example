@@ -1,5 +1,6 @@
 [CONFIG]
-statusURL:YOUR_DISCORD_WEBHOOK_HERE
+statusURL=YOUR_DISCORD_WEBHOOK_HERE
+TimeNoData= Minimum_Minutes_With_No_Data_(Ex: 10)-Set_in_minutes_no_decimal_numbers
 
 [DATABASE]
 MAD_db_host=YOUR_DB_HOST_IP_HERE
