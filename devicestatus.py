@@ -15,13 +15,13 @@ dbhost = config.get('DATABASE', 'MAD_db_host')
 MADdb = config.get('DATABASE', 'db_name')
 dbuser = config.get('DATABASE', 'db_user')
 dbpass = config.get('DATABASE', 'db_pass')
-
+TimeNoData = config.get('CONFIG', 'TimeNoData')
 
 dateStr=datetime.datetime.now()
 dateStr=f'{dateStr:%Y-%m-%d-%h-%m}'
 
 
-query="select DEVICE.name as origin,if(STATUS.lastProtoDateTime='','Unknown',time_format(STATUS.lastProtoDateTime,'%H:%i')) as lastProtoDateTime , TIMESTAMPDIFF(MINUTE, STATUS.lastProtoDateTime, NOW()) as lastProtomin from trs_status STATUS left join settings_device DEVICE on STATUS.device_id=DEVICE.device_id where (STATUS.lastProtoDateTime < now() - interval 10 minute or STATUS.lastProtoDateTime = '') order by STATUS.device_id;"
+query="select DEVICE.name as origin,if(STATUS.lastProtoDateTime='','Unknown',time_format(STATUS.lastProtoDateTime,'%H:%i')) as lastProtoDateTime , TIMESTAMPDIFF(MINUTE, STATUS.lastProtoDateTime, NOW()) as lastProtomin from trs_status STATUS left join settings_device DEVICE on STATUS.device_id=DEVICE.device_id where (STATUS.lastProtoDateTime < now() - interval TimeNoData minute or STATUS.lastProtoDateTime = '') order by STATUS.device_id;"
 mariadb_connection = mariadb.connect(host=dbhost, user=dbuser, database=MADdb, password=dbpass)
 cursor = mariadb_connection.cursor()
 cursor.execute(query)
